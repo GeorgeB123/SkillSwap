@@ -13,6 +13,8 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     
     //MARK: Variables
     
+    var currentUser: User?
+    
     var editClickCount = 0
     
     //MARK: Properties
@@ -32,6 +34,8 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        profileUsername.text = currentUser?.username
         
         aboutYou.isUserInteractionEnabled = false
         profilePicture.isUserInteractionEnabled = false

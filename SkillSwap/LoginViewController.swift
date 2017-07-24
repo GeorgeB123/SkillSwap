@@ -53,6 +53,11 @@ class LoginViewController: UIViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         super.prepare(for: segue, sender: sender)
+        let menuController = segue.destination as? MenuViewController
+        menuController?.currentUser = currentUser
+        let registerController = segue.destination as? RegisterViewController
+        registerController?.users = users
+        
     }
     
     
@@ -60,6 +65,7 @@ class LoginViewController: UIViewController {
     
     @IBAction func unwindToMealList(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.source as? RegisterViewController, let newUser = sourceViewController.newUser {
+            
             users.append(newUser)
         }
             // Save the meals.
@@ -80,6 +86,7 @@ class LoginViewController: UIViewController {
     
     
     //MARL: private methods
+    
     
     private func saveUsers() {
         

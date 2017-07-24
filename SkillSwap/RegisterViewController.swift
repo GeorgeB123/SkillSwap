@@ -13,6 +13,8 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     
     //MARK: Properties
     
+    var users = [User]()
+    
     var newUser: User?
     
     let currentDate = Date()
@@ -33,12 +35,18 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var lastName: UITextField!
     
-    @IBOutlet weak var registerButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        registerButton.isUserInteractionEnabled = true
+        //registerButton.isUserInteractionEnabled = true
+        registerUsername.delegate = self
+        registerPassword.delegate = self
+        registerRepeatPassword.delegate = self
+        email.delegate = self
+        sex.delegate = self
+        firstName.delegate = self
+        lastName.delegate = self
 
         // Do any additional setup after loading the view.
     }
@@ -57,11 +65,12 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        
+
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         // Disable the Save button while editing.
+ 
 
     }
     
@@ -72,11 +81,6 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         super.prepare(for: segue, sender: sender)
-        
-        guard let button = sender as? UIButton, button === registerButton else {
-            os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
-            return
-        }
         
         let username = registerUsername.text
         let password = registerPassword.text
@@ -97,15 +101,17 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     
     //MARK: Actions
 
-
-//    
-//    @IBAction func registerButton(_ sender: UIButton) {
-////        
-////        if(acceptedRegistration()){
-////            dismiss(animated: true, completion: nil)
-////        }
-//        
-//    }
+    @IBAction func register(_ sender: UIButton) {
+        if(registerUsername.text != "" && registerPassword.text != "" && registerRepeatPassword.text != "" && email.text != "" && firstName.text != "" && lastName.text != "" && sex.text != ""){
+            sender.isEnabled = true
+        } else {
+            os_log("Please fill in all the required fields", log: OSLog.default, type: .debug)
+            sender.isEnabled = false
+        }
+        if registerTouch() == true {
+            self.performSegue(withIdentifier: "registerButton", sender: self)
+        }
+    }
     
     @IBAction func cancelRegistration(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
@@ -113,23 +119,18 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     
     //MARK: Private functions
     
-    private func updateSaveButtonState() {
-        // Disable the Save button if the text field is empty.
-        if(registerUsername.text != ""){
-            registerButton.isUserInteractionEnabled = true
+    
+    private func registerTouch() -> Bool{
+        for user in users{
+            if(registerUsername.text == user.username){
+                os_log("Username already taken, please try another", log: OSLog.default, type: .debug)
+                return false
+            }
         }
+        return true
     }
     
-//    private func acceptedRegistration() -> Bool{
-//        
-//        if(registerUsername.text! == "" || registerPassword.text! == "" || registerBirthday.date == currentDate || sex.text! == "" || firstName.text! == "" || lastName.text! == ""){
-//            os_log("please complete all fields", log: OSLog.default, type: .debug)
-//            return false
-//        }
-//        
-//        return true
-//        
-//    }
+
 
     
     

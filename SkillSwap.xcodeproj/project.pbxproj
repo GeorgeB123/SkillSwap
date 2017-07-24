@@ -7,12 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3617F0361F2352F2009A3B02 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3617F0351F2352F2009A3B02 /* AppDelegate.swift */; };
-		3617F0381F2352F2009A3B02 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3617F0371F2352F2009A3B02 /* ViewController.swift */; };
 		3617F03B1F2352F2009A3B02 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3617F0391F2352F2009A3B02 /* Main.storyboard */; };
 		3617F03D1F2352F2009A3B02 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3617F03C1F2352F2009A3B02 /* Assets.xcassets */; };
 		3617F0401F2352F2009A3B02 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3617F03E1F2352F2009A3B02 /* LaunchScreen.storyboard */; };
 		3617F04B1F2352F2009A3B02 /* SkillSwapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3617F04A1F2352F2009A3B02 /* SkillSwapTests.swift */; };
+		3617F05C1F2380A6009A3B02 /* MapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3617F0591F2380A6009A3B02 /* MapsViewController.swift */; };
+		3617F05D1F2380A6009A3B02 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3617F05A1F2380A6009A3B02 /* MenuViewController.swift */; };
+		3617F05E1F2380A6009A3B02 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3617F05B1F2380A6009A3B02 /* ProfileViewController.swift */; };
+		3617F0601F2380B6009A3B02 /* defaultPerson.png in Resources */ = {isa = PBXBuildFile; fileRef = 3617F05F1F2380B6009A3B02 /* defaultPerson.png */; };
+		3617F0621F2380BF009A3B02 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3617F0611F2380BF009A3B02 /* AppDelegate.swift */; };
+		3617F0641F2385C0009A3B02 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3617F0631F2385C0009A3B02 /* LoginViewController.swift */; };
+		3617F0661F24A851009A3B02 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3617F0651F24A851009A3B02 /* RegisterViewController.swift */; };
+		3617F0681F24AB93009A3B02 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3617F0671F24AB92009A3B02 /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,8 +33,6 @@
 
 /* Begin PBXFileReference section */
 		3617F0321F2352F2009A3B02 /* SkillSwap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SkillSwap.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		3617F0351F2352F2009A3B02 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3617F0371F2352F2009A3B02 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3617F03A1F2352F2009A3B02 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3617F03C1F2352F2009A3B02 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3617F03F1F2352F2009A3B02 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -36,6 +40,14 @@
 		3617F0461F2352F2009A3B02 /* SkillSwapTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SkillSwapTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3617F04A1F2352F2009A3B02 /* SkillSwapTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillSwapTests.swift; sourceTree = "<group>"; };
 		3617F04C1F2352F2009A3B02 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3617F0591F2380A6009A3B02 /* MapsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapsViewController.swift; sourceTree = "<group>"; };
+		3617F05A1F2380A6009A3B02 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		3617F05B1F2380A6009A3B02 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		3617F05F1F2380B6009A3B02 /* defaultPerson.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defaultPerson.png; sourceTree = "<group>"; };
+		3617F0611F2380BF009A3B02 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3617F0631F2385C0009A3B02 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		3617F0651F24A851009A3B02 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		3617F0671F24AB92009A3B02 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,10 +89,16 @@
 		3617F0341F2352F2009A3B02 /* SkillSwap */ = {
 			isa = PBXGroup;
 			children = (
-				3617F0351F2352F2009A3B02 /* AppDelegate.swift */,
-				3617F0371F2352F2009A3B02 /* ViewController.swift */,
-				3617F0391F2352F2009A3B02 /* Main.storyboard */,
+				3617F0611F2380BF009A3B02 /* AppDelegate.swift */,
+				3617F0671F24AB92009A3B02 /* User.swift */,
+				3617F0591F2380A6009A3B02 /* MapsViewController.swift */,
+				3617F05A1F2380A6009A3B02 /* MenuViewController.swift */,
+				3617F05B1F2380A6009A3B02 /* ProfileViewController.swift */,
+				3617F0631F2385C0009A3B02 /* LoginViewController.swift */,
+				3617F0651F24A851009A3B02 /* RegisterViewController.swift */,
+				3617F05F1F2380B6009A3B02 /* defaultPerson.png */,
 				3617F03C1F2352F2009A3B02 /* Assets.xcassets */,
+				3617F0391F2352F2009A3B02 /* Main.storyboard */,
 				3617F03E1F2352F2009A3B02 /* LaunchScreen.storyboard */,
 				3617F0411F2352F2009A3B02 /* Info.plist */,
 			);
@@ -179,6 +197,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3617F0601F2380B6009A3B02 /* defaultPerson.png in Resources */,
 				3617F0401F2352F2009A3B02 /* LaunchScreen.storyboard in Resources */,
 				3617F03D1F2352F2009A3B02 /* Assets.xcassets in Resources */,
 				3617F03B1F2352F2009A3B02 /* Main.storyboard in Resources */,
@@ -199,8 +218,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3617F0381F2352F2009A3B02 /* ViewController.swift in Sources */,
-				3617F0361F2352F2009A3B02 /* AppDelegate.swift in Sources */,
+				3617F05D1F2380A6009A3B02 /* MenuViewController.swift in Sources */,
+				3617F05E1F2380A6009A3B02 /* ProfileViewController.swift in Sources */,
+				3617F0621F2380BF009A3B02 /* AppDelegate.swift in Sources */,
+				3617F0661F24A851009A3B02 /* RegisterViewController.swift in Sources */,
+				3617F0641F2385C0009A3B02 /* LoginViewController.swift in Sources */,
+				3617F05C1F2380A6009A3B02 /* MapsViewController.swift in Sources */,
+				3617F0681F24AB93009A3B02 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -408,6 +432,7 @@
 				3617F0511F2352F2009A3B02 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3617F0521F2352F2009A3B02 /* Build configuration list for PBXNativeTarget "SkillSwapTests" */ = {
 			isa = XCConfigurationList;
@@ -416,6 +441,7 @@
 				3617F0541F2352F2009A3B02 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

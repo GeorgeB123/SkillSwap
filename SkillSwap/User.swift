@@ -18,6 +18,7 @@ class User: NSObject, NSCoding {
     var gender: String
     var first: String
     var last: String
+    var photo: UIImage?
     
     //MARK: Archiving Paths
     
@@ -35,11 +36,12 @@ class User: NSObject, NSCoding {
         static let gender = "gender"
         static let first = "first"
         static let last = "last"
+        static let photo = "photo"
     }
     
     //MARK: Initialization
     
-    init(username: String, password: String, emailAddress: String, birthday: Date, gender: String, first: String, last: String) {
+    init(username: String, password: String, emailAddress: String, birthday: Date, gender: String, first: String, last: String, photo: UIImage?) {
         self.username = username
         self.password = password
         self.emailAddress = emailAddress
@@ -47,6 +49,7 @@ class User: NSObject, NSCoding {
         self.gender = gender
         self.first = first
         self.last = last
+        self.photo = photo
     }
     
     //MARK: NSCoding
@@ -60,6 +63,7 @@ class User: NSObject, NSCoding {
         aCoder.encode(gender, forKey: PropertyKey.gender)
         aCoder.encode(first, forKey: PropertyKey.first)
         aCoder.encode(last, forKey: PropertyKey.last)
+        aCoder.encode(photo, forKey: PropertyKey.photo)
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
@@ -76,8 +80,9 @@ class User: NSObject, NSCoding {
         let gender = aDecoder.decodeObject(forKey: PropertyKey.gender) as? String
         let first = aDecoder.decodeObject(forKey: PropertyKey.first) as? String
         let last = aDecoder.decodeObject(forKey: PropertyKey.last) as? String
+        let photo = aDecoder.decodeObject(forKey: PropertyKey.photo) as? UIImage
         // Must call designated initializer.
-        self.init(username: username, password: password!, emailAddress: emailAddress!, birthday: birthday!, gender: gender!, first: first!, last: last!)
+        self.init(username: username, password: password!, emailAddress: emailAddress!, birthday: birthday!, gender: gender!, first: first!, last: last!, photo: photo)
         
     }
     

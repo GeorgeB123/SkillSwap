@@ -9,13 +9,14 @@
 import UIKit
 import os.log
 
+//var users = [User]()
+//
+//var currentUser: User?
+
 class LoginViewController: UIViewController {
     
     //MARK: Properties
     
-    var users = [User]()
-    
-    var currentUser: User?
     
     @IBOutlet weak var userTextField: UITextField!
     
@@ -31,14 +32,16 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        passTextField.isSecureTextEntry = true
+        
         if let savedUsers = loadUsers() {
-            users += savedUsers
+            GlobalVar.Variables.users += savedUsers
         }
         loadSampleUsers()
 
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -53,10 +56,10 @@ class LoginViewController: UIViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         super.prepare(for: segue, sender: sender)
-        let menuController = segue.destination as? MenuViewController
-        menuController?.currentUser = currentUser
-        let registerController = segue.destination as? RegisterViewController
-        registerController?.users = users
+//        let menuController = segue.destination as? MenuViewController
+//        menuController?.currentUser = currentUser
+//        let registerController = segue.destination as? RegisterViewController
+//        registerController?.users = users
         
     }
     
@@ -66,15 +69,14 @@ class LoginViewController: UIViewController {
     @IBAction func unwindToMealList(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.source as? RegisterViewController, let newUser = sourceViewController.newUser {
             
-            users.append(newUser)
+            GlobalVar.Variables.users.append(newUser)
         }
-            // Save the meals.
         saveUsers()
             
     }
 
     @IBAction func login(_ sender: UIButton) {
-        print(users)
+        print(GlobalVar.Variables.users)
         let confirmUser = userTextField.text
         let confirmPassword = passTextField.text
         
@@ -90,7 +92,7 @@ class LoginViewController: UIViewController {
     
     private func saveUsers() {
         
-        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(users, toFile: User.ArchiveURL.path)
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(GlobalVar.Variables.users, toFile: User.ArchiveURL.path)
         
         if isSuccessfulSave {
             os_log("Users successfully saved.", log: OSLog.default, type: .debug)
@@ -105,13 +107,13 @@ class LoginViewController: UIViewController {
         var dummyDate: Date
         dummyDate = Date()
         
-        let user1 = User(username: "tom", password: "pass", emailAddress: "banter", birthday: dummyDate, gender: "male", first: "Tom", last: "Smith")
+        let user1 = User(username: "tom", password: "pass", emailAddress: "banter", birthday: dummyDate, gender: "male", first: "Tom", last: "Smith", photo: nil)
         
         
 //        let user2 = User(username: <#T##String#>, password: <#T##String#>, emailAddress: <#T##String#>, birthday: <#T##Date#>, gender: <#T##String#>, first: <#T##String#>, last: <#T##String#>)
         
         
-        users += [user1]
+        GlobalVar.Variables.users += [user1]
         
     }
     
@@ -122,9 +124,9 @@ class LoginViewController: UIViewController {
     
     private func findUser(name: String, pass: String) -> Bool{
         
-        for user in users{
+        for user in GlobalVar.Variables.users{
             if(name == user.username && pass == user.password){
-                currentUser = user
+                GlobalVar.Variables.userId = GlobalVar.Variables.users.index(of: user)!
                 return true
             }
         }

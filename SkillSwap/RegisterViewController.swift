@@ -13,7 +13,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     
     //MARK: Properties
     
-    var users = [User]()
+//    var users = [User]()
     
     var newUser: User?
     
@@ -93,8 +93,9 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         let gender = sex.text
         let first = firstName.text
         let last = lastName.text
+        let photo: UIImage = UIImage(named: "defaultImage")!
         
-        newUser = User(username: username!, password: password!, emailAddress: emailAddress!, birthday: birthday, gender: gender!, first: first!, last: last!)
+        newUser = User(username: username!, password: password!, emailAddress: emailAddress!, birthday: birthday, gender: gender!, first: first!, last: last!, photo: photo)
         
     }
  
@@ -102,14 +103,10 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     //MARK: Actions
 
     @IBAction func register(_ sender: UIButton) {
-        if(registerUsername.text != "" && registerPassword.text != "" && registerRepeatPassword.text != "" && email.text != "" && firstName.text != "" && lastName.text != "" && sex.text != ""){
-            sender.isEnabled = true
-        } else {
-            os_log("Please fill in all the required fields", log: OSLog.default, type: .debug)
-            sender.isEnabled = false
-        }
-        if registerTouch() == true {
-            self.performSegue(withIdentifier: "registerButton", sender: self)
+        if fieldsFilled(){
+            if registerAvailable() {
+                self.performSegue(withIdentifier: "registerButton", sender: self)
+            }
         }
     }
     
@@ -120,8 +117,8 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     //MARK: Private functions
     
     
-    private func registerTouch() -> Bool{
-        for user in users{
+    private func registerAvailable() -> Bool{
+        for user in GlobalVar.Variables.users{
             if(registerUsername.text == user.username){
                 os_log("Username already taken, please try another", log: OSLog.default, type: .debug)
                 return false
@@ -130,8 +127,33 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
+    private func fieldsFilled() -> Bool{
+        if(registerUsername.text != "" && registerPassword.text != "" && registerRepeatPassword.text != "" && email.text != "" && firstName.text != "" && lastName.text != "" && sex.text != ""){
+            if registerPassword.text != registerRepeatPassword.text {
+                os_log("Please make sure the passwords match", log: OSLog.default, type: .debug)
+                return false
+            }
+            if(sex.text != "male" || sex.text != "female" || sex.text != "Male" || sex.text != "Female"){
+                os_log("Please enter either Male or Female", log: OSLog.default, type: .debug)
+                return false
+            }
+            if !isValidEmail(testStr: email.text!) {
+                os_log("Invalid Email", log: OSLog.default, type: .debug)
+                return false
+            }
+            return true
+        }
+        os_log("Please fill in all the required fields", log: OSLog.default, type: .debug)
+        return false
+    }
 
-
+    private func isValidEmail(testStr:String) -> Bool {
+        // print("validate calendar: \(testStr)")
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+        
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailTest.evaluate(with: testStr)
+    }
     
     
 }

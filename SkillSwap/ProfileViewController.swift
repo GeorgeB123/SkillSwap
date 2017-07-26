@@ -13,7 +13,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     
     //MARK: Variables
     
-    var currentUser: User?
+//    var currentUser: User?
     
     var editClickCount = 0
     
@@ -35,7 +35,26 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        profileUsername.text = currentUser?.username
+        profileUsername.attributedText = NSAttributedString(string: GlobalVar.Variables.users[GlobalVar.Variables.userId].username + "'s Profile", attributes:
+            [NSUnderlineStyleAttributeName: NSUnderlineStyle.styleSingle.rawValue])
+//        profileUsername.layer.borderColor = UIColor.blue.cgColor
+        //profileUsername.layer.borderWidth = 1.0
+        age.layer.borderWidth = 1.0
+        age.layer.cornerRadius = 8
+        gender.layer.borderWidth = 1.0
+        gender.layer.cornerRadius = 8
+        aboutYou.layer.borderColor = UIColor.clear.cgColor
+        aboutYou.layer.borderWidth = 1.0
+        aboutYou.layer.cornerRadius = 8
+        emailAddress.layer.borderWidth = 1.0
+        emailAddress.layer.cornerRadius = 8
+        
+        navigationItem.title = GlobalVar.Variables.users[GlobalVar.Variables.userId].first.uppercased() + " " + GlobalVar.Variables.users[GlobalVar.Variables.userId].last.uppercased()
+        //profileUsername.text = GlobalVar.Variables.users[GlobalVar.Variables.userId].username
+        profilePicture.image = GlobalVar.Variables.users[GlobalVar.Variables.userId].photo
+        
+        gender.text = " Gender: " + GlobalVar.Variables.users[GlobalVar.Variables.userId].gender
+        emailAddress.text = " Email: " + GlobalVar.Variables.users[GlobalVar.Variables.userId].emailAddress
         
         aboutYou.isUserInteractionEnabled = false
         profilePicture.isUserInteractionEnabled = false
@@ -53,9 +72,8 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     // MARK: - Navigation
     
     @IBAction func back(_ sender: UIBarButtonItem) {
+            self.performSegue(withIdentifier: "UpdateProfile", sender: self)
 
-        dismiss(animated: true, completion: nil)
-        
     }
     
 
@@ -65,6 +83,8 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         // Pass the selected object to the new view controller.
         super.prepare(for: segue, sender: sender)
         
+//        let menuController = segue.destination as? MenuViewController
+//        menuController?.currentUser = currentUser
     }
     
     //MARK: UITextFieldDelegate
@@ -116,6 +136,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         
         // Set photoImageView to display the selected image.
         profilePicture.image = selectedImage
+        GlobalVar.Variables.users[GlobalVar.Variables.userId].photo = selectedImage
         
         // Dismiss the picker.
         dismiss(animated: true, completion: nil)
@@ -126,7 +147,9 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     
     //allows editing of the profile
     @IBAction func editProfile(_ sender: UIBarButtonItem) {
-        
+        if sender.title == "Done" {
+            updateUser()
+        }
         editClickCount += 1
         sender.title = "Done"
         aboutYou.isUserInteractionEnabled = true
@@ -137,6 +160,20 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
             profilePicture.isUserInteractionEnabled = false
             editClickCount = 0;
         }
+    }
+    
+    //MARK: private functions
+    
+    private func updateUser() {
+        
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(GlobalVar.Variables.users, toFile: User.ArchiveURL.path)
+        
+        if isSuccessfulSave {
+            os_log("User successfully updated.", log: OSLog.default, type: .debug)
+        } else {
+            os_log("Failed to update user...", log: OSLog.default, type: .error)
+        }
+        
     }
     
 }

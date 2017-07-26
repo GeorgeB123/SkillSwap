@@ -19,6 +19,7 @@
 		3617F0641F2385C0009A3B02 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3617F0631F2385C0009A3B02 /* LoginViewController.swift */; };
 		3617F0661F24A851009A3B02 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3617F0651F24A851009A3B02 /* RegisterViewController.swift */; };
 		3617F0681F24AB93009A3B02 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3617F0671F24AB92009A3B02 /* User.swift */; };
+		363EB0FF1F273CEE00324C01 /* GlobalVar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363EB0FE1F273CEE00324C01 /* GlobalVar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		3617F0631F2385C0009A3B02 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		3617F0651F24A851009A3B02 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		3617F0671F24AB92009A3B02 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		363EB0FE1F273CEE00324C01 /* GlobalVar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalVar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 			children = (
 				3617F0611F2380BF009A3B02 /* AppDelegate.swift */,
 				3617F0671F24AB92009A3B02 /* User.swift */,
+				363EB0FE1F273CEE00324C01 /* GlobalVar.swift */,
 				3617F0591F2380A6009A3B02 /* MapsViewController.swift */,
 				3617F05A1F2380A6009A3B02 /* MenuViewController.swift */,
 				3617F05B1F2380A6009A3B02 /* ProfileViewController.swift */,
@@ -222,6 +225,7 @@
 				3617F05E1F2380A6009A3B02 /* ProfileViewController.swift in Sources */,
 				3617F0621F2380BF009A3B02 /* AppDelegate.swift in Sources */,
 				3617F0661F24A851009A3B02 /* RegisterViewController.swift in Sources */,
+				363EB0FF1F273CEE00324C01 /* GlobalVar.swift in Sources */,
 				3617F0641F2385C0009A3B02 /* LoginViewController.swift in Sources */,
 				3617F05C1F2380A6009A3B02 /* MapsViewController.swift in Sources */,
 				3617F0681F24AB93009A3B02 /* User.swift in Sources */,

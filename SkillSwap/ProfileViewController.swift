@@ -31,6 +31,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     
     @IBOutlet weak var emailAddress: UILabel!
     
+    @IBOutlet weak var backButton: UIBarButtonItem!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,7 +56,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         
         gender.text = " Gender: " + GlobalVar.Variables.users[GlobalVar.Variables.userId].gender
         emailAddress.text = " Email: " + GlobalVar.Variables.users[GlobalVar.Variables.userId].emailAddress
-        
+        aboutYou.text = GlobalVar.Variables.users[GlobalVar.Variables.userId].about
         aboutYou.isUserInteractionEnabled = false
         profilePicture.isUserInteractionEnabled = false
 
@@ -147,18 +148,19 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     
     //allows editing of the profile
     @IBAction func editProfile(_ sender: UIBarButtonItem) {
-        if sender.title == "Done" {
-            updateUser()
-        }
         editClickCount += 1
         sender.title = "Done"
+        backButton.isEnabled = false
         aboutYou.isUserInteractionEnabled = true
         profilePicture.isUserInteractionEnabled = true
         if(editClickCount == 2){
+            GlobalVar.Variables.users[GlobalVar.Variables.userId].about = aboutYou.text!
+            backButton.isEnabled = true
             sender.title = "Edit"
             aboutYou.isUserInteractionEnabled = false
             profilePicture.isUserInteractionEnabled = false
             editClickCount = 0;
+            updateUser()
         }
     }
     

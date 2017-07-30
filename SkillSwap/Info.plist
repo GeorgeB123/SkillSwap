@@ -43,5 +43,11 @@
 	</array>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Allows to add profile pictures</string>
+	<key>NSLocationUsageDescription</key>
+	<string>Allow to use current location</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Allows to use when in use </string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Allows the app to access location information</string>
 </dict>
 </plist>

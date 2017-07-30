@@ -16,12 +16,10 @@ class MenuViewController: UIViewController {
     
     @IBOutlet weak var username: UILabel!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+
         username.text = "Welcome " + GlobalVar.Variables.users[GlobalVar.Variables.userId].first
-        
-        updateUser()
         
         //print(currentUser)
         // Do any additional setup after loading the view, typically from a nib.
@@ -47,18 +45,17 @@ class MenuViewController: UIViewController {
         // Pass the selected object to the new view controller.
         super.prepare(for: segue, sender: sender)
         
-//        let navView = segue.destination as? UINavigationController
-//        let menuController = navView?.viewControllers.first as? ProfileViewController
-//        
-//        menuController?.currentUser = currentUser
+
     }
     
     @IBAction func goToProfile(_ sender: UIButton) {
+        //print(GlobalVar.Variables.users[GlobalVar.Variables.userId].skills[0].count)
     }
     
     @IBAction func addSkills(_ sender: UIButton) {
-        updateUser()
-        print(GlobalVar.Variables.users[GlobalVar.Variables.userId].photo)
+        print(GlobalVar.Variables.users[GlobalVar.Variables.userId].skills)
+//        self.popUpViewController.showInView(self.view, withImage: UIImage(named: "typpzDemo"), withMessage: "You just triggered a great popup window", animated: true)
+//        print(GlobalVar.Variables.users[GlobalVar.Variables.userId].photo)
     }
     
     @IBAction func findSkills(_ sender: UIButton) {
@@ -66,14 +63,8 @@ class MenuViewController: UIViewController {
     
     //MARK: Private Functions
     
-    private func updateUser() {
-//        let myVC = storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
-//        for user in myVC.users{
-//            if(currentUser?.username == user.username){
-//                user.photo = currentUser?.photo
-//            }
-//        }
-    }
+
+    
     
 }
 

@@ -19,6 +19,10 @@ class User: NSObject, NSCoding {
     var first: String
     var last: String
     var photo: UIImage?
+    var about: String
+    var skills: [[String]]
+    var location: [Int]
+    
     
     //MARK: Archiving Paths
     
@@ -37,11 +41,14 @@ class User: NSObject, NSCoding {
         static let first = "first"
         static let last = "last"
         static let photo = "photo"
+        static let about = "about"
+        static let skills = "skills"
+        static let location = "location"
     }
     
     //MARK: Initialization
     
-    init(username: String, password: String, emailAddress: String, birthday: Date, gender: String, first: String, last: String, photo: UIImage?) {
+    init(username: String, password: String, emailAddress: String, birthday: Date, gender: String, first: String, last: String, photo: UIImage?, about: String, skills: [[String]], location: [Int]) {
         self.username = username
         self.password = password
         self.emailAddress = emailAddress
@@ -50,6 +57,9 @@ class User: NSObject, NSCoding {
         self.first = first
         self.last = last
         self.photo = photo
+        self.about = about
+        self.skills = skills
+        self.location = location
     }
     
     //MARK: NSCoding
@@ -64,6 +74,9 @@ class User: NSObject, NSCoding {
         aCoder.encode(first, forKey: PropertyKey.first)
         aCoder.encode(last, forKey: PropertyKey.last)
         aCoder.encode(photo, forKey: PropertyKey.photo)
+        aCoder.encode(about, forKey: PropertyKey.about)
+        aCoder.encode(skills, forKey: PropertyKey.skills)
+        aCoder.encode(location, forKey: PropertyKey.location)
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
@@ -81,8 +94,11 @@ class User: NSObject, NSCoding {
         let first = aDecoder.decodeObject(forKey: PropertyKey.first) as? String
         let last = aDecoder.decodeObject(forKey: PropertyKey.last) as? String
         let photo = aDecoder.decodeObject(forKey: PropertyKey.photo) as? UIImage
+        let about = aDecoder.decodeObject(forKey: PropertyKey.about) as? String
+        let skills = aDecoder.decodeObject(forKey: PropertyKey.skills) as? [[String]]
+        let location = aDecoder.decodeObject(forKey: PropertyKey.location) as? [Int]
         // Must call designated initializer.
-        self.init(username: username, password: password!, emailAddress: emailAddress!, birthday: birthday!, gender: gender!, first: first!, last: last!, photo: photo)
+        self.init(username: username, password: password!, emailAddress: emailAddress!, birthday: birthday!, gender: gender!, first: first!, last: last!, photo: photo, about: about!, skills: skills!, location: location!)
         
     }
     

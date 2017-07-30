@@ -8,10 +8,15 @@
 
 import UIKit
 import MapKit
+import CoreLocation
 
-class MapsViewController: UIViewController, MKMapViewDelegate {
+class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
+
+    let locationManager = CLLocationManager()
     
-    //MARK: Properties
+    let initialLocation = CLLocation(latitude: 21.282778, longitude: -157.829444)
+    
+    let regionRadius: CLLocationDistance = 1000
     
     @IBOutlet weak var map: MKMapView!
     
@@ -19,6 +24,15 @@ class MapsViewController: UIViewController, MKMapViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.map.delegate = self
+        
+        locationManager.delegate = self;
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestAlwaysAuthorization()
+        locationManager.startUpdatingLocation()
+        
+        map.showsUserLocation = true
+//        centerMapOnLocation(location: initialLocation)
 
         // Do any additional setup after loading the view.
     }
@@ -26,6 +40,19 @@ class MapsViewController: UIViewController, MKMapViewDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    //MARK: MKMapViewDelegate
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let userLocation:CLLocation = locations[0] as CLLocation
+        
+        manager.stopUpdatingLocation()
+        let coordinations = CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude,longitude: userLocation.coordinate.longitude)
+        let span = MKCoordinateSpanMake(0.2,0.2)
+        let region = MKCoordinateRegion(center: coordinations, span: span)
+        
+        map.setRegion(region, animated: true)
     }
     
 
@@ -44,6 +71,15 @@ class MapsViewController: UIViewController, MKMapViewDelegate {
     @IBAction func goBack(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
     }
+    
+    //MARK: Provate methods
+    
+    private func centerMapOnLocation(location: CLLocation) {
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
+                                                                  regionRadius * 2.0, regionRadius * 2.0)
+        map.setRegion(coordinateRegion, animated: true)
+    }
+    
     
 
 }

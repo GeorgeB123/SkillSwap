@@ -107,7 +107,7 @@ class LoginViewController: UIViewController {
         var dummyDate: Date
         dummyDate = Date()
         
-        let user1 = User(username: "tom", password: "pass", emailAddress: "banter", birthday: dummyDate, gender: "male", first: "Tom", last: "Smith", photo: nil)
+        let user1 = User(username: "tom", password: "pass", emailAddress: "banter", birthday: dummyDate, gender: "male", first: "Tom", last: "Smith", photo: nil, about: "", skills: [[String]](), location: [0, 0])
         
         
 //        let user2 = User(username: <#T##String#>, password: <#T##String#>, emailAddress: <#T##String#>, birthday: <#T##Date#>, gender: <#T##String#>, first: <#T##String#>, last: <#T##String#>)

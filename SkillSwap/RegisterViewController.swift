@@ -94,8 +94,11 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         let first = firstName.text
         let last = lastName.text
         let photo: UIImage = UIImage(named: "defaultImage")!
+        let about = ""
+        let skills = [[String]]()
+        let location = [0, 0]
         
-        newUser = User(username: username!, password: password!, emailAddress: emailAddress!, birthday: birthday, gender: gender!, first: first!, last: last!, photo: photo)
+        newUser = User(username: username!, password: password!, emailAddress: emailAddress!, birthday: birthday, gender: gender!, first: first!, last: last!, photo: photo, about: about, skills: skills, location: location)
         
     }
  
@@ -133,10 +136,10 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
                 os_log("Please make sure the passwords match", log: OSLog.default, type: .debug)
                 return false
             }
-            if(sex.text != "male" || sex.text != "female" || sex.text != "Male" || sex.text != "Female"){
-                os_log("Please enter either Male or Female", log: OSLog.default, type: .debug)
-                return false
-            }
+//            if(sex.text != "male" || sex.text != "female" || sex.text != "Male" || sex.text != "Female"){
+//                os_log("Please enter either Male or Female", log: OSLog.default, type: .debug)
+//                return false
+//            }
             if !isValidEmail(testStr: email.text!) {
                 os_log("Invalid Email", log: OSLog.default, type: .debug)
                 return false

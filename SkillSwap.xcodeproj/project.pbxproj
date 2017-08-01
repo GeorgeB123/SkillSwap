@@ -22,6 +22,7 @@
 		363EB0FF1F273CEE00324C01 /* GlobalVar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363EB0FE1F273CEE00324C01 /* GlobalVar.swift */; };
 		36A8BF7B1F2B4AA30091711D /* ManageSkillsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A8BF7A1F2B4AA30091711D /* ManageSkillsViewController.swift */; };
 		36A8BF7D1F2B831E0091711D /* TableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A8BF7C1F2B831E0091711D /* TableCell.swift */; };
+		36A8BF831F2F8FB10091711D /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A8BF821F2F8FB10091711D /* PopUpViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		363EB0FE1F273CEE00324C01 /* GlobalVar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalVar.swift; sourceTree = "<group>"; };
 		36A8BF7A1F2B4AA30091711D /* ManageSkillsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageSkillsViewController.swift; sourceTree = "<group>"; };
 		36A8BF7C1F2B831E0091711D /* TableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableCell.swift; sourceTree = "<group>"; };
+		36A8BF821F2F8FB10091711D /* PopUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 				3617F0651F24A851009A3B02 /* RegisterViewController.swift */,
 				36A8BF7A1F2B4AA30091711D /* ManageSkillsViewController.swift */,
 				36A8BF7C1F2B831E0091711D /* TableCell.swift */,
+				36A8BF821F2F8FB10091711D /* PopUpViewController.swift */,
 				3617F05F1F2380B6009A3B02 /* defaultPerson.png */,
 				3617F03C1F2352F2009A3B02 /* Assets.xcassets */,
 				3617F0391F2352F2009A3B02 /* Main.storyboard */,
@@ -231,6 +234,7 @@
 				36A8BF7D1F2B831E0091711D /* TableCell.swift in Sources */,
 				3617F05D1F2380A6009A3B02 /* MenuViewController.swift in Sources */,
 				3617F05E1F2380A6009A3B02 /* ProfileViewController.swift in Sources */,
+				36A8BF831F2F8FB10091711D /* PopUpViewController.swift in Sources */,
 				36A8BF7B1F2B4AA30091711D /* ManageSkillsViewController.swift in Sources */,
 				3617F0621F2380BF009A3B02 /* AppDelegate.swift in Sources */,
 				3617F0661F24A851009A3B02 /* RegisterViewController.swift in Sources */,

@@ -27,10 +27,6 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var email: UITextField!
     
-    @IBOutlet weak var registerBirthday: UIDatePicker!
-    
-    @IBOutlet weak var sex: UITextField!
-    
     @IBOutlet weak var firstName: UITextField!
     
     @IBOutlet weak var lastName: UITextField!
@@ -44,7 +40,6 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         registerPassword.delegate = self
         registerRepeatPassword.delegate = self
         email.delegate = self
-        sex.delegate = self
         firstName.delegate = self
         lastName.delegate = self
 
@@ -88,17 +83,15 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
             os_log("Passwords do not match", log: OSLog.default, type: .debug)
             return
         }
-        let birthday = Date()
         let emailAddress = email.text
-        let gender = sex.text
         let first = firstName.text
         let last = lastName.text
         let photo: UIImage = UIImage(named: "defaultImage")!
         let about = ""
         let skills = [[String]]()
-        let location = [0, 0]
+        let location = [0.0, 0.0]
         
-        newUser = User(username: username!, password: password!, emailAddress: emailAddress!, birthday: birthday, gender: gender!, first: first!, last: last!, photo: photo, about: about, skills: skills, location: location)
+        newUser = User(username: username!, password: password!, emailAddress: emailAddress!, first: first!, last: last!, photo: photo, about: about, skills: skills, location: location)
         
     }
  
@@ -131,7 +124,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func fieldsFilled() -> Bool{
-        if(registerUsername.text != "" && registerPassword.text != "" && registerRepeatPassword.text != "" && email.text != "" && firstName.text != "" && lastName.text != "" && sex.text != ""){
+        if(registerUsername.text != "" && registerPassword.text != "" && registerRepeatPassword.text != "" && email.text != "" && firstName.text != "" && lastName.text != ""){
             if registerPassword.text != registerRepeatPassword.text {
                 os_log("Please make sure the passwords match", log: OSLog.default, type: .debug)
                 return false

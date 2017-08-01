@@ -14,8 +14,6 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
 
     let locationManager = CLLocationManager()
     
-    let initialLocation = CLLocation(latitude: 21.282778, longitude: -157.829444)
-    
     let regionRadius: CLLocationDistance = 1000
     
     @IBOutlet weak var map: MKMapView!
@@ -30,7 +28,14 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestAlwaysAuthorization()
         locationManager.startUpdatingLocation()
-        
+        map.showsUserLocation = true
+        for users in GlobalVar.Variables.users {
+            if users.location != [0, 0]{
+                let annotation = MKPointAnnotation()
+                annotation.coordinate = CLLocationCoordinate2D(latitude: users.location[0] , longitude: users.location[1])
+                map.addAnnotation(annotation)
+            }
+        }
         map.showsUserLocation = true
 //        centerMapOnLocation(location: initialLocation)
 
@@ -51,7 +56,8 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         let coordinations = CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude,longitude: userLocation.coordinate.longitude)
         let span = MKCoordinateSpanMake(0.2,0.2)
         let region = MKCoordinateRegion(center: coordinations, span: span)
-        
+        GlobalVar.Variables.users[GlobalVar.Variables.userId].location[0] = Double(userLocation.coordinate.latitude)
+        GlobalVar.Variables.users[GlobalVar.Variables.userId].location[1] = Double(userLocation.coordinate.longitude)
         map.setRegion(region, animated: true)
     }
     
@@ -69,6 +75,8 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     //MARK: Navigation
     
     @IBAction func goBack(_ sender: UIBarButtonItem) {
+        print(GlobalVar.Variables.users[GlobalVar.Variables.userId].location[0])
+        print(GlobalVar.Variables.users[GlobalVar.Variables.userId].location[1])
         dismiss(animated: true, completion: nil)
     }
     
@@ -80,6 +88,13 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         map.setRegion(coordinateRegion, animated: true)
     }
     
+    @IBAction func showPopUp(_ sender: UIButton) {
+        let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "sbPopUp") as! PopUpViewController
+        self.addChildViewController(popOverVC)
+        popOverVC.view.frame = self.view.frame
+        self.view.addSubview(popOverVC.view)
+        popOverVC.didMove(toParentViewController: self)
+    }
     
 
 }

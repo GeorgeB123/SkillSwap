@@ -25,7 +25,6 @@ class TableCell: UITableViewCell {
         levelField.layer.borderColor = UIColor.clear.cgColor
         levelField.layer.borderWidth = 1.0
         levelField.layer.cornerRadius = 8
-        newSkillField.text = "dick"
         // Initialization code
     }
     

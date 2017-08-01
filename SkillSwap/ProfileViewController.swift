@@ -21,10 +21,6 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     
     @IBOutlet weak var profileUsername: UILabel!
     
-    @IBOutlet weak var age: UILabel!
-    
-    @IBOutlet weak var gender: UILabel!
-    
     @IBOutlet weak var profilePicture: UIImageView!
     
     @IBOutlet weak var aboutYou: UITextField!
@@ -40,10 +36,6 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
             [NSUnderlineStyleAttributeName: NSUnderlineStyle.styleSingle.rawValue])
 //        profileUsername.layer.borderColor = UIColor.blue.cgColor
         //profileUsername.layer.borderWidth = 1.0
-        age.layer.borderWidth = 1.0
-        age.layer.cornerRadius = 8
-        gender.layer.borderWidth = 1.0
-        gender.layer.cornerRadius = 8
         aboutYou.layer.borderColor = UIColor.clear.cgColor
         aboutYou.layer.borderWidth = 1.0
         aboutYou.layer.cornerRadius = 8
@@ -54,7 +46,6 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         //profileUsername.text = GlobalVar.Variables.users[GlobalVar.Variables.userId].username
         profilePicture.image = GlobalVar.Variables.users[GlobalVar.Variables.userId].photo
         
-        gender.text = " Gender: " + GlobalVar.Variables.users[GlobalVar.Variables.userId].gender
         emailAddress.text = " Email: " + GlobalVar.Variables.users[GlobalVar.Variables.userId].emailAddress
         aboutYou.text = GlobalVar.Variables.users[GlobalVar.Variables.userId].about
         aboutYou.isUserInteractionEnabled = false

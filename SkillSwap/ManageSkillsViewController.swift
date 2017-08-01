@@ -19,6 +19,10 @@ class ManageSkillsViewController: UIViewController, UITableViewDelegate, UITable
     
     @IBOutlet weak var backButton: UIBarButtonItem!
     
+    @IBOutlet weak var newSkill: UITextField!
+    
+    @IBOutlet weak var newLevel: UITextField!
+    
     var clickCount = 0
     var skills = [String]()
     var level = [String]()
@@ -30,7 +34,14 @@ class ManageSkillsViewController: UIViewController, UITableViewDelegate, UITable
         self.tbl.dataSource = self
         skillsTitle.text = GlobalVar.Variables.users[GlobalVar.Variables.userId].first + "'s skills"
         
-        tbl.isUserInteractionEnabled = false
+        //tbl.isUserInteractionEnabled = false
+        
+        newSkill.layer.borderColor = UIColor.clear.cgColor
+        newSkill.layer.borderWidth = 1.0
+        newSkill.layer.cornerRadius = 8
+        newLevel.layer.borderColor = UIColor.clear.cgColor
+        newLevel.layer.borderWidth = 1.0
+        newLevel.layer.cornerRadius = 8
         
         if(!GlobalVar.Variables.users[GlobalVar.Variables.userId].skills.isEmpty){
             skills = GlobalVar.Variables.users[GlobalVar.Variables.userId].skills[0]
@@ -64,7 +75,8 @@ class ManageSkillsViewController: UIViewController, UITableViewDelegate, UITable
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tbl.dequeueReusableCell(withIdentifier: "TableCell", for: indexPath as IndexPath) as! TableCell
-        cell.newSkillField.text = ""
+        cell.newSkillField.text = skills[indexPath.row]
+        cell.levelField.text = level[indexPath.row]
         return cell
     }
 
@@ -82,21 +94,12 @@ class ManageSkillsViewController: UIViewController, UITableViewDelegate, UITable
     //MARK: Actions
     
     @IBAction func edit(_ sender: UIBarButtonItem) {
-        clickCount += 1
-        sender.title = "Save"
-        tbl.isUserInteractionEnabled = true
-        backButton.isEnabled = false
-        if(clickCount == 2){
-            GlobalVar.Variables.users[GlobalVar.Variables.userId].skills = []
-            GlobalVar.Variables.users[GlobalVar.Variables.userId].skills.append(skills)
-            GlobalVar.Variables.users[GlobalVar.Variables.userId].skills.append(level)
-            print(GlobalVar.Variables.users[GlobalVar.Variables.userId].skills)
-            sender.title = "Edit"
-            tbl.isUserInteractionEnabled = false
-            backButton.isEnabled = true
-            clickCount = 0;
-            saveUsers()
-        }
+    GlobalVar.Variables.users[GlobalVar.Variables.userId].skills = []
+    GlobalVar.Variables.users[GlobalVar.Variables.userId].skills.append(skills)
+        GlobalVar.Variables.users[GlobalVar.Variables.userId].skills.append(level)
+        print(GlobalVar.Variables.users[GlobalVar.Variables.userId].skills)
+        saveUsers()
+
     }
     
     @IBAction func back(_ sender: UIBarButtonItem) {
@@ -104,12 +107,22 @@ class ManageSkillsViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     @IBAction func addSkills(_ sender: UIButton) {
-        if skills.count == 5 {
-            os_log("You can only have 5 skills active at any one time", log: OSLog.default, type: .debug)
-        } else {
-            skills.append("dick")
-            level.append("")
-            tbl.reloadData()
+        if(newSkill.text == "" || newLevel.text == ""){
+            os_log("please enter a valid skill or appropriate level", log: OSLog.default, type: .debug)
+            return
+        }else{
+            
+            if skills.count == 5 {
+                os_log("You can only have 5 skills active at any one time", log: OSLog.default, type: .debug)
+            } else {
+                skills.append(newSkill.text!)
+                level.append(newLevel.text!)
+                newSkill.text = ""
+                newLevel.text = ""
+                newLevel.resignFirstResponder()
+                newSkill.resignFirstResponder()
+                tbl.reloadData()
+            }
         }
 //        self.skills.insert("hey", at: 0)
 //        self.tbl.beginUpdates()

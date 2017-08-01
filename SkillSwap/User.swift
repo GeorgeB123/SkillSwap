@@ -14,14 +14,12 @@ class User: NSObject, NSCoding {
     var username: String
     var password: String
     var emailAddress: String
-    var birthday: Date
-    var gender: String
     var first: String
     var last: String
     var photo: UIImage?
     var about: String
     var skills: [[String]]
-    var location: [Int]
+    var location: [Double]
     
     
     //MARK: Archiving Paths
@@ -36,8 +34,6 @@ class User: NSObject, NSCoding {
         static let username = "username"
         static let password = "password"
         static let emailAddress = "emailAddress"
-        static let birthday = "birthday"
-        static let gender = "gender"
         static let first = "first"
         static let last = "last"
         static let photo = "photo"
@@ -48,12 +44,10 @@ class User: NSObject, NSCoding {
     
     //MARK: Initialization
     
-    init(username: String, password: String, emailAddress: String, birthday: Date, gender: String, first: String, last: String, photo: UIImage?, about: String, skills: [[String]], location: [Int]) {
+    init(username: String, password: String, emailAddress: String, first: String, last: String, photo: UIImage?, about: String, skills: [[String]], location: [Double]) {
         self.username = username
         self.password = password
         self.emailAddress = emailAddress
-        self.birthday = birthday
-        self.gender = gender
         self.first = first
         self.last = last
         self.photo = photo
@@ -69,8 +63,6 @@ class User: NSObject, NSCoding {
         aCoder.encode(username, forKey: PropertyKey.username)
         aCoder.encode(password, forKey: PropertyKey.password)
         aCoder.encode(emailAddress, forKey: PropertyKey.emailAddress)
-        aCoder.encode(birthday, forKey: PropertyKey.birthday)
-        aCoder.encode(gender, forKey: PropertyKey.gender)
         aCoder.encode(first, forKey: PropertyKey.first)
         aCoder.encode(last, forKey: PropertyKey.last)
         aCoder.encode(photo, forKey: PropertyKey.photo)
@@ -89,16 +81,14 @@ class User: NSObject, NSCoding {
         // Because photo is an optional property of Meal, just use conditional cast.
         let password = aDecoder.decodeObject(forKey: PropertyKey.password) as? String
         let emailAddress = aDecoder.decodeObject(forKey: PropertyKey.emailAddress) as? String
-        let birthday = aDecoder.decodeObject(forKey: PropertyKey.birthday) as? Date
-        let gender = aDecoder.decodeObject(forKey: PropertyKey.gender) as? String
         let first = aDecoder.decodeObject(forKey: PropertyKey.first) as? String
         let last = aDecoder.decodeObject(forKey: PropertyKey.last) as? String
         let photo = aDecoder.decodeObject(forKey: PropertyKey.photo) as? UIImage
         let about = aDecoder.decodeObject(forKey: PropertyKey.about) as? String
         let skills = aDecoder.decodeObject(forKey: PropertyKey.skills) as? [[String]]
-        let location = aDecoder.decodeObject(forKey: PropertyKey.location) as? [Int]
+        let location = aDecoder.decodeObject(forKey: PropertyKey.location) as? [Double]
         // Must call designated initializer.
-        self.init(username: username, password: password!, emailAddress: emailAddress!, birthday: birthday!, gender: gender!, first: first!, last: last!, photo: photo, about: about!, skills: skills!, location: location!)
+        self.init(username: username, password: password!, emailAddress: emailAddress!, first: first!, last: last!, photo: photo, about: about!, skills: skills!, location: location!)
         
     }
     

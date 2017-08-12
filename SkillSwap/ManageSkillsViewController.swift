@@ -17,8 +17,6 @@ class ManageSkillsViewController: UIViewController, UITableViewDelegate, UITable
 
     @IBOutlet weak var skillsTitle: UILabel!
     
-    @IBOutlet weak var backButton: UIBarButtonItem!
-    
     @IBOutlet weak var newSkill: UITextField!
     
     @IBOutlet weak var newLevel: UITextField!
@@ -102,10 +100,7 @@ class ManageSkillsViewController: UIViewController, UITableViewDelegate, UITable
 
     }
     
-    @IBAction func back(_ sender: UIBarButtonItem) {
-        dismiss(animated: true, completion: nil)
-    }
-    
+
     @IBAction func addSkills(_ sender: UIButton) {
         if(newSkill.text == "" || newLevel.text == ""){
             os_log("please enter a valid skill or appropriate level", log: OSLog.default, type: .debug)

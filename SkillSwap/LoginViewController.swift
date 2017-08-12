@@ -81,7 +81,7 @@ class LoginViewController: UIViewController {
         let confirmPassword = passTextField.text
         
         if findUser(name: confirmUser!, pass: confirmPassword!){
-            self.performSegue(withIdentifier: "LoginSegue", sender: self)
+            self.performSegue(withIdentifier: "Login", sender: self)
         }
         
     }

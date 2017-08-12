@@ -74,11 +74,6 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     
     //MARK: Navigation
     
-    @IBAction func goBack(_ sender: UIBarButtonItem) {
-        print(GlobalVar.Variables.users[GlobalVar.Variables.userId].location[0])
-        print(GlobalVar.Variables.users[GlobalVar.Variables.userId].location[1])
-        dismiss(animated: true, completion: nil)
-    }
     
     //MARK: Provate methods
     
@@ -88,12 +83,13 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         map.setRegion(coordinateRegion, animated: true)
     }
     
-    @IBAction func showPopUp(_ sender: UIButton) {
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "sbPopUp") as! PopUpViewController
         self.addChildViewController(popOverVC)
         popOverVC.view.frame = self.view.frame
         self.view.addSubview(popOverVC.view)
         popOverVC.didMove(toParentViewController: self)
+        
     }
     
 

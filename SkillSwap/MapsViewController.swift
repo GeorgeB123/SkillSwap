@@ -84,7 +84,7 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "sbPopUp") as! PopUpViewController
+        let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "sbPopUp") as! ProfilePopUpController
         self.addChildViewController(popOverVC)
         popOverVC.view.frame = self.view.frame
         self.view.addSubview(popOverVC.view)

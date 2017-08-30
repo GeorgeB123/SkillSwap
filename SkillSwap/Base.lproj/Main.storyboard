@@ -303,7 +303,7 @@
                             <constraint firstItem="vVp-1w-fhD" firstAttribute="leading" secondItem="HjT-os-X2D" secondAttribute="leading" id="7JY-cS-XF5"/>
                             <constraint firstAttribute="bottom" secondItem="vVp-1w-fhD" secondAttribute="bottom" constant="213" id="Ata-Am-eUU"/>
                             <constraint firstAttribute="trailing" secondItem="vVp-1w-fhD" secondAttribute="trailing" id="Chl-l7-eIn"/>
-                            <constraint firstItem="vVp-1w-fhD" firstAttribute="top" secondItem="tfn-nX-R7q" secondAttribute="bottom" id="rec-dS-MW7"/>
+                            <constraint firstItem="vVp-1w-fhD" firstAttribute="top" secondItem="tfn-nX-R7q" secondAttribute="bottom" id="iJv-Yj-g09"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Your Profile" id="FHr-IA-gNC">
@@ -581,10 +581,10 @@
             </objects>
             <point key="canvasLocation" x="1933.5999999999999" y="-663.41829085457277"/>
         </scene>
-        <!--Pop Up View Controller-->
+        <!--Profile Pop Up Controller-->
         <scene sceneID="AR9-fg-u8z">
             <objects>
-                <viewController storyboardIdentifier="sbPopUp" id="Kf4-fP-PYr" customClass="PopUpViewController" customModule="SkillSwap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="sbPopUp" id="Kf4-fP-PYr" customClass="ProfilePopUpController" customModule="SkillSwap" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Mgb-Op-8Kg"/>
                         <viewControllerLayoutGuide type="bottom" id="9zj-EO-Hah"/>
@@ -734,26 +734,57 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wlw-Kd-BbJ">
                                 <rect key="frame" x="43" y="73" width="290" height="501"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rjZ-2V-l9z">
-                                        <rect key="frame" x="125.5" y="463" width="39" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Close"/>
-                                        <connections>
-                                            <action selector="close:" destination="GuU-XG-y0j" eventType="touchUpInside" id="W5e-vO-k25"/>
-                                        </connections>
-                                    </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VX8-HI-3u6">
                                         <rect key="frame" x="8" y="8" width="274" height="251"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qNV-HZ-kqx">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="popUpTable" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qNV-HZ-kqx">
                                         <rect key="frame" x="0.0" y="267" width="290" height="188"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="PopUpTableCell" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="8k2-2x-s5o" customClass="PopUpTableCell" customModule="SkillSwap" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="28" width="290" height="44"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8k2-2x-s5o" id="WvY-Hk-xJF">
+                                                    <rect key="frame" x="0.0" y="0.0" width="290" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q3H-iB-0lS">
+                                                            <rect key="frame" x="16" y="4" width="33" height="32"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PIV-aW-bUd">
+                                                            <rect key="frame" x="99" y="11" width="150" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="label" destination="PIV-aW-bUd" id="NTD-5b-ihL"/>
+                                                    <outlet property="labelImage" destination="Q3H-iB-0lS" id="mxu-Dk-uKO"/>
+                                                </connections>
+                                            </tableViewCell>
+                                        </prototypes>
+                                        <connections>
+                                            <outlet property="dataSource" destination="GuU-XG-y0j" id="Whb-1v-1Sl"/>
+                                            <outlet property="delegate" destination="GuU-XG-y0j" id="s55-sJ-ju2"/>
+                                        </connections>
                                     </tableView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.91817114639999997" green="0.91817114639999997" blue="0.91817114639999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rjZ-2V-l9z">
+                                <rect key="frame" x="160" y="535" width="55" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Close"/>
+                                <connections>
+                                    <action selector="close:" destination="GuU-XG-y0j" eventType="touchUpInside" id="W5e-vO-k25"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -766,6 +797,7 @@
                     </view>
                     <connections>
                         <outlet property="profilePicture" destination="VX8-HI-3u6" id="YfG-lp-adx"/>
+                        <outlet property="table" destination="qNV-HZ-kqx" id="8FP-3f-CQF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z4O-7W-hcK" userLabel="First Responder" sceneMemberID="firstResponder"/>

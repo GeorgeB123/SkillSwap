@@ -21,6 +21,7 @@
 		3617F0661F24A851009A3B02 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3617F0651F24A851009A3B02 /* RegisterViewController.swift */; };
 		3617F0681F24AB93009A3B02 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3617F0671F24AB92009A3B02 /* User.swift */; };
 		363EB0FF1F273CEE00324C01 /* GlobalVar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363EB0FE1F273CEE00324C01 /* GlobalVar.swift */; };
+		365AE7EC1F422A80001E3F8B /* PopUpTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365AE7EB1F422A80001E3F8B /* PopUpTableCell.swift */; };
 		36A8BF7B1F2B4AA30091711D /* ManageSkillsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A8BF7A1F2B4AA30091711D /* ManageSkillsViewController.swift */; };
 		36A8BF7D1F2B831E0091711D /* TableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A8BF7C1F2B831E0091711D /* TableCell.swift */; };
 		36A8BF831F2F8FB10091711D /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A8BF821F2F8FB10091711D /* PopUpViewController.swift */; };
@@ -55,6 +56,7 @@
 		3617F0651F24A851009A3B02 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		3617F0671F24AB92009A3B02 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		363EB0FE1F273CEE00324C01 /* GlobalVar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalVar.swift; sourceTree = "<group>"; };
+		365AE7EB1F422A80001E3F8B /* PopUpTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpTableCell.swift; sourceTree = "<group>"; };
 		36A8BF7A1F2B4AA30091711D /* ManageSkillsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageSkillsViewController.swift; sourceTree = "<group>"; };
 		36A8BF7C1F2B831E0091711D /* TableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableCell.swift; sourceTree = "<group>"; };
 		36A8BF821F2F8FB10091711D /* PopUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				3617F0651F24A851009A3B02 /* RegisterViewController.swift */,
 				36A8BF7A1F2B4AA30091711D /* ManageSkillsViewController.swift */,
 				36A8BF7C1F2B831E0091711D /* TableCell.swift */,
+				365AE7EB1F422A80001E3F8B /* PopUpTableCell.swift */,
 				36A8BF821F2F8FB10091711D /* PopUpViewController.swift */,
 				36043AEE1F3F721800576F26 /* ProfilePopUpController.swift */,
 				3616F6B51F3487D200038E53 /* PinAnnotation.swift */,
@@ -234,6 +237,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				365AE7EC1F422A80001E3F8B /* PopUpTableCell.swift in Sources */,
 				36A8BF7D1F2B831E0091711D /* TableCell.swift in Sources */,
 				3617F05E1F2380A6009A3B02 /* ProfileViewController.swift in Sources */,
 				36A8BF831F2F8FB10091711D /* PopUpViewController.swift in Sources */,
